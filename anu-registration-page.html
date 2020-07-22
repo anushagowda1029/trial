@@ -1,0 +1,129 @@
+<!dOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" conten="width=device-width, initial-scale=1">
+    <style>
+        body {
+            background-image: url("https://s17736.pcdn.co/wp-content/uploads/2019/03/jason-leung-479251-unsplash.jpg");
+        }
+
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+            transition: 0.3s;
+            width: 40%;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 16px 0 #ccc;
+        }
+
+        input[type=text] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 0px 0;
+            display: inline-block;
+            border: 1px solid rgb(115, 188, 247);
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=password] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 0px 0;
+            display: inline-block;
+            border: 1px solid rgb(115, 188, 247);
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=email] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 0px 0;
+            display: inline-block;
+            border: 1px solid rgb(115, 188, 247);
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=submit] {
+            width: 100%;
+            background-color: #07998d;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type=submit]:hover {
+            background-color: #044b5f;
+        }
+
+        div {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 28px;
+        }
+
+        input[type=radio] {
+            background-color: chartreuse;
+        }
+
+        .green-text {
+            color: pink;
+        }
+
+        .validationError {
+            color: red;
+            font-size: 80%;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <h1 style="color: #ccc; font-family: sans-serif; font-size: 45px;">registraion page</h1>
+        <div class="card">
+            <form name="register" onsubmit="return validate()" method="POST" action="#">
+                <label for="username">First name</label>
+                <input type="text" name="firstName" id="firstName" placeholder="enter your first name">
+                <span class="validationError" id="firstNameError"></span>
+
+                <label for="lname">Last name</label>
+                <input type="text" name="lastName" id="lastName" placeholder="enter your last name">
+                <span class="validationError" id="lastNameError"></span>
+
+                <label for="usermail">email-id</label>
+                <input type="text" name="userMail" id="userMail" placeholder="enter your mail">
+                <span class="validationError" id="userMailError"></span>
+
+                <label for="clg">college name</label>
+                <input type="text" name="collegeName" id="collegeName" placeholder="enter your college name">
+                <span class="validationError" id="collegeNameError"></span>
+
+                <label>university number</label>
+                <input type="text" name="studentUsn" id="studentUsn" placeholder="enter your university number">
+                <span class="validationError" id="studentUsnError"></span>
+
+                <label>percentage</label>
+                <input type="text" name="studentMarks" id="studentMarks" placeholder="marks">
+                <span class="validationError" id="studentMarksError"></span>
+
+                <label>password</label>
+                <input type="password" name="userPassword" id="userPassword" placeholder="your password">
+                <span class="validationError" id="userPasswordError"></span>
+                <br>
+                <input type="submit">
+            </form>
+        </div>
+    </center>
+    <script src="validation.js">
+      
+    </script>
+</body>
+
+</html>
