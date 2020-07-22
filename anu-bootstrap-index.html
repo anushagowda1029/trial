@@ -21,6 +21,10 @@
             margin: auto;
             padding:0;
         }
+        .validationError {
+            color:red;
+            font-size: 80%;
+        }
     </style>
 </head>
 
@@ -58,13 +62,13 @@
             <li data-target="#demo" data-slide-to="2"></li>
         </ul>
         <div class="carousel-inner">
-            <div class="carousel-item active">
+            <div class="carousel-item active img-fluid">
                 <img src="https://dummyimage.com/1380x600/000/fff" alt="Los Angeles">
             </div>
-            <div class="carousel-item">
+            <div class="carousel-item img-fluid">
                 <img src="https://dummyimage.com/1380x600/000/fff" alt="chicago">
             </div>
-            <div class="carousel-item">
+            <div class="carousel-item img-fluid">
                 <img src="https://dummyimage.com/1380x600/000/fff" alt="new york">
             </div>
         </div>
@@ -157,14 +161,15 @@
                             have any queries write to us
                         </div>
                         <div class="card-body">
-                            <form>
+                            <form name="contact" onsubmit="return validate()" method="POST" action="#">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="name" placeholder="name" size="78">
+                                    <input type="text" class="form-control" name="contactName" id="contactNameID" placeholder="name" size="78">
+                                    <span class="validationError" id="contactNameError"></span>
 
                                 </div>
                                 <div class="form-group">
-                                    <textarea class="form-control" name="message"
-                                        placeholder=" your message"></textarea>
+                                    <textarea class="form-control" name="contactMessage" id="contactMessageID" placeholder=" your message"></textarea>
+                                    <span class="validationError" id="contactMessageError"></span>
                                 </div>
                                 <div class="card-footer">
                                     <input type="submit" class="btn active btn-success btn-block" values="submit">
@@ -203,7 +208,7 @@
             </div>
         </div>
         <script>
-            function initmap() {
+            function initMap() {
                 var uluru = {last: 12.971599,   img = 77.594566};
                 var map = new google.maps.map(
                 document.getElementById("map"), {zoom: 4, center: uluru});
@@ -212,6 +217,49 @@
         </script>
         
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJDU36eDnaOEf5hjotg2GgeuLUFEGjoBA&callback=initMap"></script>
+        <script> 
+            function printError(elementID,messageHint){
+                document.getElementById(elementID).innerHTML=messageHint;
+            }
+            
+            function validate() {
+                
+                var contactName = document.contact.contactName.value;
+                var contactMessage = document.contact.contactMessage.value;
+                var contactNameError = true;
+                var contactMessageError = true;
+                if(contactName == ""){
+                    printError("contactNameError","Please Enter Your Name");
+                } else {
+                    var regularExpression = /^[a-zA-Z\s]+$/;
+                    if(regularExpression.test(contactName)===false){
+                        printError("contactNameError","Please Enter a Valid Name");
+                    }else{
+                        printError("contactNameError","");
+                        contactNameError=false;
+                    }
+                }
+
+                if(contactMessage ==""){
+                    printError("contactMessageError","Message can't be blank, Please Enter a Message!")
+                } else {
+                    printError("contactMessageError","");
+                    contactMessageError=false;
+                }
+
+
+
+                if((contactNameError || contactMessageError)==true)
+                {
+                    return false;
+                }else{
+                    var output = "Your name is "+contactName +
+                    "Your Message is"+contactMessage;
+                    alert(output);
+                }
+                
+            }
+        </script>
     </footer>
 
 </body>
